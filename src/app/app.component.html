@@ -1,0 +1,54 @@
+<!-- <div class="">
+  <h1>sa cfdc</h1> -->
+
+<!-- <app-employee></app-employee> -->
+<!-- <h1>Parent Component</h1>
+  parent component: <input type="text" #Pcomponent (keyup)="(zero)" /> -->
+<!-- <app-employee [Pdata]="Pcomponent.value"></app-employee>  -->
+<!-- <h1>Value of Child Component: {{ Cdata }}</h1> -->
+<!-- <app-employee (childEvent)="getData($event)"></app-employee> -->
+<!-- <app-employee (childEvent)="Cdata = $event"></app-employee> -->
+<!-- <div class="app-employee"> -->
+<!-- <app-employee></app-employee> -->
+<!-- </div> -->
+<!-- <div app-employee></div>
+  <div app-employee></div>
+  <div app-employee></div> -->
+<!-- </div> -->
+
+<!-- <div> -->
+<!-- @if(false){
+  <h1>hi</h1>
+  } -->
+<!-- @else{
+  <h1>bye</h1>
+  } -->
+<!-- </div> -->
+
+<!-- <div>
+  <button (click)="login()">Login</button>
+  <button (click)="logout()">Logout</button>
+  @if(isLoggedIn){
+  <h1>User is isLoggedIn</h1>
+  } @else{
+  <h1>User is not isLoggedIn</h1>
+  }
+</div> -->
+<div>
+  <input type="radio" name="red" checked (click)="onChange(true)" /> Male
+  <input type="radio" name="red" (click)="onChange(false)" /> Female
+  @if(isValid){
+  <div>I am Male</div>
+  } @if(!isValid){
+  <div>I am Female</div>
+  } 
+  @if(num1>num2){
+  <div>num1 is greater than num2</div>
+  }
+  @else if(num1<num2){
+    <div>num1 is less than num2</div>
+  } 
+  @else{
+  <div>num2 is equal num1</div>
+  }
+</div>
