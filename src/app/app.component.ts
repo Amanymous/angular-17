@@ -1,58 +1,47 @@
-import { Component, HostListener, ViewEncapsulation } from '@angular/core';
+import { Component, HostBinding } from '@angular/core';
 import { CommonModule } from '@angular/common';
 import { RouterOutlet } from '@angular/router';
-import { EmployeeComponent } from './employee/employee.component';
-import { Book } from './book';
+import { FormsModule } from '@angular/forms';
+import { NzButtonModule } from 'ng-zorro-antd/button';
+import { NzFormModule } from 'ng-zorro-antd/form';
+import { NzCardModule } from 'ng-zorro-antd/card';
+import { NzDropDownModule } from 'ng-zorro-antd/dropdown';
+import { NzLayoutModule } from 'ng-zorro-antd/layout';
 
-class abc {
-  constructor() {
-    console.log('Constructor Called!');
-  }
-  show() {
-    console.log('abc show function ');
-  }
-}
+import { BannerComponent } from './banner/banner.component';
+import { SkillsComponent } from './skills/skills.component';
+import { ProjectsComponent } from './projects/projects.component';
+import { PersonalInformationComponent } from './personal-information/personal-information.component';
+import { ContactComponent } from './contact/contact.component';
+import { EducationComponent } from './education/education.component';
+import { WorkExperienceComponent } from './work-experience/work-experience.component';
+import { ResponsiveDirective } from './directives/responsive.directive';
+
 @Component({
   selector: 'app-root',
   standalone: true,
-  imports: [CommonModule, RouterOutlet, EmployeeComponent],
+  imports: [
+    CommonModule,
+    RouterOutlet,
+    FormsModule,
+    NzButtonModule,
+    NzFormModule,
+    NzCardModule,
+    NzLayoutModule,
+    NzDropDownModule,
+    BannerComponent,
+    SkillsComponent,
+    ProjectsComponent,
+    PersonalInformationComponent,
+    ContactComponent,
+    EducationComponent,
+    WorkExperienceComponent,
+    ResponsiveDirective,
+  ],
   templateUrl: './app.component.html',
-  // template: '<h1>hi</h1>',
   styleUrl: './app.component.css',
   preserveWhitespaces: true,
-  // styles: ['h1{ background-color:orange }'],
-  viewProviders: [abc, Book],
-  encapsulation: ViewEncapsulation.ShadowDom,
 })
 export class AppComponent {
-  constructor(private abc: abc, private book: Book) {
-    console.log('component constructor called', abc, book);
-    abc.show();
-  }
-
-  title = 'angular-app';
-  zero: number = 0;
-  num1: number = 100;
-  num2: number = 100;
-  Cdata: any;
-  isLoggedIn: boolean = true;
-  isValid: boolean = true;
-  getData(val: any) {
-    this.Cdata = val;
-  }
-  login() {
-    this.isLoggedIn = true;
-  }
-  logout() {
-    this.isLoggedIn = false;
-  }
-  onChange(val: boolean) {
-    this.isValid = val;
-  }
-  // @HostListener('click', ['$event'])
-  // show() {
-  //   alert('kjsd');
-  // }
-
-  //  parent to child communication input property
+  @HostBinding('class.pc') pcMode = false;
 }
