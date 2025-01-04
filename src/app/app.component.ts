@@ -1,14 +1,15 @@
 import { Component } from '@angular/core';
 import { RouterOutlet } from '@angular/router';
-import { NzButtonModule } from 'ng-zorro-antd/button';
-import { HeaderComponent } from './header/header.component';
+import { ComputedSignalComponent } from './computed-signal/computed-signal.component';
+import { EffectsSignalsComponent } from './effects-signals/effects-signals.component';
+
 @Component({
   selector: 'app-root',
   standalone: true,
-  imports: [RouterOutlet, NzButtonModule, HeaderComponent],
+  imports: [RouterOutlet, ComputedSignalComponent, EffectsSignalsComponent],
   templateUrl: './app.component.html',
   styleUrl: './app.component.css',
 })
 export class AppComponent {
-  title = 'angular-app';
+  title = 'angular-18';
 }
