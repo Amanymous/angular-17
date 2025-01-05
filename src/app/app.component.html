@@ -1,4 +1,9 @@
 <div>
   <!-- <app-computed-signal></app-computed-signal> -->
-  <app-effects-signals></app-effects-signals>
+  <!-- <app-effects-signals></app-effects-signals> -->
+  @if(componentToggle()){
+  <app-equality-function-signals></app-equality-function-signals>
+
+  }
+  <button (click)="onToggleComponent()">Toggle</button>
 </div>
