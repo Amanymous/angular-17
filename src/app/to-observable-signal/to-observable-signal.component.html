@@ -1,0 +1,8 @@
+<p>to-observable-signal works!</p>
+
+<input type="text" (input)="onQuerychange($event)" />
+<ul>
+  @for(result of result$ | async; track result){
+  <li>{{ result }}</li>
+  }
+</ul>

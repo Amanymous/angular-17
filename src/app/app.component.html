@@ -1,9 +1,19 @@
 <div>
   <!-- <app-computed-signal></app-computed-signal> -->
   <!-- <app-effects-signals></app-effects-signals> -->
-  @if(componentToggle()){
+  <!-- @if(componentToggle()){
   <app-equality-function-signals></app-equality-function-signals>
 
   }
-  <button (click)="onToggleComponent()">Toggle</button>
+  <button (click)="onToggleComponent()">Toggle</button> -->
+  <!-- <app-rxjs-interop-signal></app-rxjs-interop-signal> -->
+  <!-- <app-to-observable-signal></app-to-observable-signal> -->
+  <app-input-1
+    [dummyCounter]="1"
+    [message]="'Hi'"
+    [showCounter]="'true'"
+    [title]="title"
+  ></app-input-1>
+  <p>--------------</p>
+  <app-getter-input-1 [title]="'fsdjnf'"></app-getter-input-1>
 </div>
