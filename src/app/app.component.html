@@ -8,12 +8,53 @@
   <button (click)="onToggleComponent()">Toggle</button> -->
   <!-- <app-rxjs-interop-signal></app-rxjs-interop-signal> -->
   <!-- <app-to-observable-signal></app-to-observable-signal> -->
-  <app-input-1
+  <!-- <app-input-1
     [dummyCounter]="1"
     [message]="'Hi'"
     [showCounter]="'true'"
     [title]="title"
   ></app-input-1>
   <p>--------------</p>
-  <app-getter-input-1 [title]="'fsdjnf'"></app-getter-input-1>
+  <app-getter-input-1 [title]="'fsdjnf'"></app-getter-input-1> -->
+
+  <!-- <div>
+    <app-output (childEvent)="dataRecevied($event)"></app-output>
+    @if(receivedDataFromChild){
+    <div>{{ receivedDataFromChild }}</div>
+    }
+  </div> -->
+
+  <!-- <div (click)="changeTitle()">
+    <div>
+      <button (click)="changeTitle()">Change title</button>
+      <button (click)="toggleHook()">toggle</button>
+      <button (click)="changeCounter()">Counter</button>
+      <app-life-cycle-hooks
+        [title]="title"
+        [counter]="counter"
+        *ngIf="isActive"
+      >
+        <app-profile></app-profile>
+      </app-life-cycle-hooks>
+    </div>
+  </div>
+</div> -->
+
+  <!-- <div>
+  <app-checked-life-cycle></app-checked-life-cycle>
+</div> -->
+
+  <!-- <div>
+    <app-view-children
+      *ngFor="let task of tasks"
+      [taskName]="task"
+    ></app-view-children>
+  </div> -->
+
+  <div>
+    <app-parent>
+      <app-child></app-child>
+      <app-view-children [taskName]="'task'"></app-view-children>
+    </app-parent>
+  </div>
 </div>
