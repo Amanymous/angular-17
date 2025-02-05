@@ -1,0 +1,7 @@
+<div>
+  <button (click)="onSave($event)">Click</button>
+</div>
+<div>
+  <input type="text" (keydown)="onKey($event)" />
+  <input type="text" (keydown.shift.t)="onKey($event)" />
+</div>

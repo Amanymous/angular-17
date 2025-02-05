@@ -1,0 +1,23 @@
+.bgcolor-green {
+  background-color: green;
+}
+
+.color-red {
+  color: red;
+}
+
+.active {
+  color: orangered;
+}
+
+.highlight {
+  background-color: yellow;
+}
+
+.dynamic-class {
+  color: red;
+}
+
+.static-class {
+  color: blue;
+}

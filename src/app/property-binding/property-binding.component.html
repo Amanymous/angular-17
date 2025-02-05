@@ -1,0 +1,40 @@
+<table border="1">
+  <tr>
+    <td>id</td>
+    <td>Name</td>
+  </tr>
+
+  <tr>
+    <td [colSpan]="1 + 1">Aman</td>
+  </tr>
+</table>
+<br />
+<br />
+<br />
+<button [disabled]="isDisabled">Click Here</button>
+<br />
+<br />
+<br />
+<div [ngClass]="classes">Aman</div>
+<br />
+<br />
+<br />
+<app-item-list [items]="items"></app-item-list>
+
+<div [class.active]="isActive">This is an active div</div>
+<div [ngClass]="{ active: isActive, highlight: isHighlighted }">
+  This is an active div
+</div>
+<div
+  [ngClass]="{
+    active: isActive,
+    highlight: isHighlighted,
+    disabled: isDisabled
+  }"
+>
+  This is an active div
+</div>
+
+<div class="static-class" [class.dynamic-class]="isDynamic">
+  This is an active div
+</div>

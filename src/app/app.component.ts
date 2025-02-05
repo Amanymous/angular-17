@@ -21,6 +21,13 @@ import { CheckedLifeCycleComponent } from './checked-life-cycle/checked-life-cyc
 import { ViewChildrenComponent } from './view-children/view-children.component';
 import { ChildComponent } from './child/child.component';
 import { ParentComponent } from './parent/parent.component';
+import { AdminProfileComponent } from './admin-profile/admin-profile.component';
+import { UserProfileComponent } from './user-profile/user-profile.component';
+import { HostComponent } from './host/host.component';
+import { DynamicComponent } from './dynamic/dynamic.component';
+import { PropertyBindingComponent } from './property-binding/property-binding.component';
+import { EventBindingComponent } from './event-binding/event-binding.component';
+import { TwoWayBindingComponent } from './two-way-binding/two-way-binding.component';
 @Component({
   selector: 'app-root',
   standalone: true,
@@ -41,6 +48,13 @@ import { ParentComponent } from './parent/parent.component';
     ViewChildrenComponent,
     ChildComponent,
     ParentComponent,
+    // AdminProfileComponent,
+    // UserProfileComponent,
+    HostComponent,
+    DynamicComponent,
+    PropertyBindingComponent,
+    EventBindingComponent,
+    TwoWayBindingComponent,
   ],
   templateUrl: './app.component.html',
   styleUrl: './app.component.css',
@@ -52,42 +66,69 @@ export class AppComponent {
   counter = 1;
   isActive = true;
   receivedDataFromChild = '';
+  isAdmin = true;
 
-  @ViewChildren(ViewChildrenComponent, { read: ElementRef })
-  viewChildTask!: QueryList<ElementRef>;
+  fontSizePx = 19;
 
-  ngAfterViewInit() {
-    this.viewChildTask.forEach((task) => {
-      console.log(task);
-    });
-    this.viewChildTask.changes.subscribe(() => {
-      console.log('Child Component has Changed');
-    });
-    setTimeout(() => {
-      this.tasks.push('hi aman');
-    }, 3000);
-  }
+  // profileComponent: {
+  //   new (): AdminProfileComponent | UserProfileComponent;
+  // } | null = null;
 
-  dataRecevied(data: string) {
-    this.receivedDataFromChild = data;
-  }
+  // ngOnInit() {
+  //   this.getProfileComponent();
+  // }
 
-  componentToggle = signal(false);
+  // @ViewChildren(ViewChildrenComponent, { read: ElementRef })
+  // viewChildTask!: QueryList<ElementRef>;
 
-  onToggleComponent() {
-    this.componentToggle.update((val) => !val);
-  }
+  // ngAfterViewInit() {
+  //   this.viewChildTask.forEach((task) => {
+  //     console.log(task);
+  //   });
+  //   this.viewChildTask.changes.subscribe(() => {
+  //     console.log('Child Component has Changed');
+  //   });
+  //   setTimeout(() => {
+  //     this.tasks.push('hi aman');
+  //   }, 3000);
+  // }
 
-  changeTitle() {
-    // this.title = 'aman' + Math.random();
-    this.title = { name: 'aman' + Math.random() };
-  }
+  // async getProfileComponent() {
+  //   if (this.isAdmin) {
+  //     const { AdminProfileComponent } = await import(
+  //       './admin-profile/admin-profile.component'
+  //     );
+  //     this.profileComponent = AdminProfileComponent;
+  //   } else {
+  //     const { UserProfileComponent } = await import(
+  //       './user-profile/user-profile.component'
+  //     );
+  //     this.profileComponent = UserProfileComponent;
+  //   }
 
-  toggleHook() {
-    this.isActive = !this.isActive;
-  }
+  //   // return !this.isAdmin ? AdminProfileComponent : UserProfileComponent;
+  // }
 
-  changeCounter() {
-    this.counter = this.counter + 1;
-  }
+  // dataRecevied(data: string) {
+  //   this.receivedDataFromChild = data;
+  // }
+
+  // componentToggle = signal(false);
+
+  // onToggleComponent() {
+  //   this.componentToggle.update((val) => !val);
+  // }
+
+  // changeTitle() {
+  //   // this.title = 'aman' + Math.random();
+  //   this.title = { name: 'aman' + Math.random() };
+  // }
+
+  // toggleHook() {
+  //   this.isActive = !this.isActive;
+  // }
+
+  // changeCounter() {
+  //   this.counter = this.counter + 1;
+  // }
 }

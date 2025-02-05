@@ -51,10 +51,32 @@
     ></app-view-children>
   </div> -->
 
-  <div>
+  <!-- <div>
     <app-parent>
       <app-child></app-child>
       <app-view-children [taskName]="'task'"></app-view-children>
     </app-parent>
+  </div> -->
+
+  <div>
+    <!-- <app-admin-profile *ngIf="isAdmin"></app-admin-profile>
+    <app-user-profile *ngIf="!isAdmin"></app-user-profile> -->
+    <!-- <ng-container *ngComponentOutlet="getProfileComponent()"> </ng-container> -->
+    <!-- <ng-container *ngComponentOutlet="this.profileComponent"> </ng-container> -->
+  </div>
+
+  <!-- <div>
+    <app-host></app-host>
+  </div> -->
+  <!-- <div><app-parent></app-parent></div> -->
+  <!-- <div><app-property-binding></app-property-binding></div> -->
+  <!-- <div>
+    <app-event-binding></app-event-binding>
+  </div> -->
+  <div>
+    <app-two-way-binding
+      [size]="fontSizePx"
+      (onSizeChange)="fontSizePx = $event"
+    ></app-two-way-binding>
   </div>
 </div>
