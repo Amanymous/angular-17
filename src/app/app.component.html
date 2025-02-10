@@ -73,10 +73,44 @@
   <!-- <div>
     <app-event-binding></app-event-binding>
   </div> -->
-  <div>
+  <!-- <div>
     <app-two-way-binding
       [size]="fontSizePx"
       (onSizeChange)="fontSizePx = $event"
     ></app-two-way-binding>
+  </div> -->
+
+  <!-- <div>
+    @for(item of items; track item){
+    <div>Value: {{ item }}</div>
+    } @empty {
+    <div>No items</div>
+    }
+  </div>
+  <div>
+    @switch(userRole){ @case('admin'){
+    <div>You are an administrator</div>
+    } @case('user'){
+    <div>You are a user</div>
+    } @default {
+    <div>Unknown role</div>
+    }}
+  </div> -->
+  <!-- <div>{{ "Aman" | greet }}</div>
+  <div>{{ (1 ? 9 : 0) | exponentialStrength : 2 }}</div> -->
+
+  <div>
+    <label>New Hero Name:</label>
+    <input
+      type="text"
+      #box
+      (keyup.enter)="addHero(box.value); box.value = ''"
+      placeholder="Enter Hero Name"
+    />
+    <div>
+      @for(hero of (heroes | flyhero); track hero.name){
+      <div>{{ hero.name }}</div>
+      }
+    </div>
   </div>
 </div>

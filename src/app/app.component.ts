@@ -28,6 +28,10 @@ import { DynamicComponent } from './dynamic/dynamic.component';
 import { PropertyBindingComponent } from './property-binding/property-binding.component';
 import { EventBindingComponent } from './event-binding/event-binding.component';
 import { TwoWayBindingComponent } from './two-way-binding/two-way-binding.component';
+import { of } from 'rxjs';
+import { GreetPipe } from './greet.pipe';
+import { ExponentialStrengthPipe } from './exponential.strength';
+import { FlyheroPipe } from './flyhero.pipe';
 @Component({
   selector: 'app-root',
   standalone: true,
@@ -55,6 +59,9 @@ import { TwoWayBindingComponent } from './two-way-binding/two-way-binding.compon
     PropertyBindingComponent,
     EventBindingComponent,
     TwoWayBindingComponent,
+    GreetPipe,
+    FlyheroPipe,
+    ExponentialStrengthPipe,
   ],
   templateUrl: './app.component.html',
   styleUrl: './app.component.css',
@@ -67,68 +74,79 @@ export class AppComponent {
   isActive = true;
   receivedDataFromChild = '';
   isAdmin = true;
+  items = [1, 2, 3, 4, 5];
+  heroes: { name: string; canFly: boolean }[] = [];
+  user = { name: 'Aman' };
+  details$ = of([1, 2, 3, 4]);
+  userRole = 'admin';
 
   fontSizePx = 19;
 
-  // profileComponent: {
-  //   new (): AdminProfileComponent | UserProfileComponent;
-  // } | null = null;
+  profileComponent: {
+    new (): AdminProfileComponent | UserProfileComponent;
+  } | null = null;
 
-  // ngOnInit() {
-  //   this.getProfileComponent();
-  // }
+  ngOnInit() {
+    this.getProfileComponent();
+  }
 
-  // @ViewChildren(ViewChildrenComponent, { read: ElementRef })
-  // viewChildTask!: QueryList<ElementRef>;
+  @ViewChildren(ViewChildrenComponent, { read: ElementRef })
+  viewChildTask!: QueryList<ElementRef>;
 
-  // ngAfterViewInit() {
-  //   this.viewChildTask.forEach((task) => {
-  //     console.log(task);
-  //   });
-  //   this.viewChildTask.changes.subscribe(() => {
-  //     console.log('Child Component has Changed');
-  //   });
-  //   setTimeout(() => {
-  //     this.tasks.push('hi aman');
-  //   }, 3000);
-  // }
+  ngAfterViewInit() {
+    this.viewChildTask.forEach((task) => {
+      console.log(task);
+    });
+    this.viewChildTask.changes.subscribe(() => {
+      console.log('Child Component has Changed');
+    });
+    setTimeout(() => {
+      this.tasks.push('hi aman');
+    }, 3000);
+  }
 
-  // async getProfileComponent() {
-  //   if (this.isAdmin) {
-  //     const { AdminProfileComponent } = await import(
-  //       './admin-profile/admin-profile.component'
-  //     );
-  //     this.profileComponent = AdminProfileComponent;
-  //   } else {
-  //     const { UserProfileComponent } = await import(
-  //       './user-profile/user-profile.component'
-  //     );
-  //     this.profileComponent = UserProfileComponent;
-  //   }
+  async getProfileComponent() {
+    if (this.isAdmin) {
+      const { AdminProfileComponent } = await import(
+        './admin-profile/admin-profile.component'
+      );
+      this.profileComponent = AdminProfileComponent;
+    } else {
+      const { UserProfileComponent } = await import(
+        './user-profile/user-profile.component'
+      );
+      this.profileComponent = UserProfileComponent;
+    }
 
-  //   // return !this.isAdmin ? AdminProfileComponent : UserProfileComponent;
-  // }
+    // return !this.isAdmin ? AdminProfileComponent : UserProfileComponent;
+  }
 
-  // dataRecevied(data: string) {
-  //   this.receivedDataFromChild = data;
-  // }
+  dataRecevied(data: string) {
+    this.receivedDataFromChild = data;
+  }
 
-  // componentToggle = signal(false);
+  componentToggle = signal(false);
 
-  // onToggleComponent() {
-  //   this.componentToggle.update((val) => !val);
-  // }
+  onToggleComponent() {
+    this.componentToggle.update((val) => !val);
+  }
 
-  // changeTitle() {
-  //   // this.title = 'aman' + Math.random();
-  //   this.title = { name: 'aman' + Math.random() };
-  // }
+  changeTitle() {
+    // this.title = 'aman' + Math.random();
+    this.title = { name: 'aman' + Math.random() };
+  }
 
-  // toggleHook() {
-  //   this.isActive = !this.isActive;
-  // }
+  toggleHook() {
+    this.isActive = !this.isActive;
+  }
 
-  // changeCounter() {
-  //   this.counter = this.counter + 1;
-  // }
+  changeCounter() {
+    this.counter = this.counter + 1;
+  }
+
+  addHero(hero: string) {
+    // let heroes = [...this.heroes];
+    this.heroes.push({ name: hero, canFly: true });
+    // this.heroes = heroes;
+  }
 }
