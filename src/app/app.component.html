@@ -99,7 +99,7 @@
   <!-- <div>{{ "Aman" | greet }}</div>
   <div>{{ (1 ? 9 : 0) | exponentialStrength : 2 }}</div> -->
 
-  <div>
+  <!-- <div>
     <label>New Hero Name:</label>
     <input
       type="text"
@@ -112,5 +112,37 @@
       <div>{{ hero.name }}</div>
       }
     </div>
+  </div> -->
+
+  <!-- <div> -->
+  <!-- <input #phone />
+    <button type="button" (click)="cellPhone(phone.value)">call</button> -->
+
+  <!-- <form #itemForm="ngForm">
+      <input type="text" ngModel />
+    </form> -->
+
+  <!-- <input type="text" value="Aman" #ref />
+    <div>{{ ref.value }}</div> -->
+  <!-- </div> -->
+
+  <div *appIsDog="animal" ngTemplateGuard_appIsDog>{{ animal | json }}</div>
+  <div
+    *appDemo="
+      demoString;
+      url: demoUrl;
+      let version;
+      let demo = demo;
+      let url = url
+    "
+  >
+    This is the context
+    <div>
+      Version: {{ version }}, Demo: {{ demo }},Url: {{ url.url }}, Video:
+      {{ url.video }}
+    </div>
+  </div>
+  <div>
+    <app-widget color="yellow" (colorChanged)="doSomething()"></app-widget>
   </div>
 </div>

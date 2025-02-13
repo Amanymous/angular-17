@@ -32,6 +32,12 @@ import { of } from 'rxjs';
 import { GreetPipe } from './greet.pipe';
 import { ExponentialStrengthPipe } from './exponential.strength';
 import { FlyheroPipe } from './flyhero.pipe';
+import { FormsModule } from '@angular/forms';
+import { Animal, IsDogDirective } from './is-dog.directive';
+import { DemoDirective, DemoUrl } from './demo.directive';
+import { WidgetComponent } from './widget/widget.component';
+import { ColorDirective } from './color.directive';
+import { BackgroundColorDirective } from './background-color.directive';
 @Component({
   selector: 'app-root',
   standalone: true,
@@ -62,6 +68,12 @@ import { FlyheroPipe } from './flyhero.pipe';
     GreetPipe,
     FlyheroPipe,
     ExponentialStrengthPipe,
+    FormsModule,
+    IsDogDirective,
+    DemoDirective,
+    WidgetComponent,
+    // ColorDirective,
+    // BackgroundColorDirective,
   ],
   templateUrl: './app.component.html',
   styleUrl: './app.component.css',
@@ -79,8 +91,21 @@ export class AppComponent {
   user = { name: 'Aman' };
   details$ = of([1, 2, 3, 4]);
   userRole = 'admin';
-
+  animal: Animal = {
+    name: 'Dog',
+    breed: 'sdafd',
+    type: 'dog',
+  };
+  demoString = 'Demo';
+  demoUrl: DemoUrl = {
+    url: 'https://www.google.com',
+    video: true,
+  };
   fontSizePx = 19;
+
+  doSomething() {
+    console.log('Event fired');
+  }
 
   profileComponent: {
     new (): AdminProfileComponent | UserProfileComponent;
@@ -148,5 +173,8 @@ export class AppComponent {
     // let heroes = [...this.heroes];
     this.heroes.push({ name: hero, canFly: true });
     // this.heroes = heroes;
+  }
+  cellPhone(value: string) {
+    console.log(value);
   }
 }
