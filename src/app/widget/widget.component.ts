@@ -1,4 +1,12 @@
-import { Component, inject, Inject, InjectionToken } from '@angular/core';
+import {
+  assertInInjectionContext,
+  Component,
+  inject,
+  Inject,
+  InjectionToken,
+  Injector,
+  runInInjectionContext,
+} from '@angular/core';
 import { ColorDirective } from '../color.directive';
 import { BackgroundColorDirective } from '../background-color.directive';
 import { ConsoleLoggerService } from '../console-logger.service';
@@ -37,10 +45,10 @@ const myServiceToken = new InjectionToken<MyserviceService>('myService', {
   templateUrl: './widget.component.html',
   providers: [
     LoggerFactory,
-    // {
-    //   provide: myServiceToken,
-    //   useExisting: MyserviceService,
-    // },
+    {
+      provide: myServiceToken,
+      useExisting: MyserviceService,
+    },
   ],
   styleUrl: './widget.component.css',
 })
@@ -49,11 +57,20 @@ export class WidgetComponent {
   // constructor(@Inject(Logger_Token) private logger: Logger) {
   //   this.logger.log('hi');
   // }
+  injector = inject(Injector);
   constructor(
     private myService: MyserviceService,
     @Inject(myServiceToken) private service2: MyserviceService
   ) {
     this.myService.getId();
     this.service2.getId();
+  }
+
+  getData() {
+    assertInInjectionContext(this.getData);
+    runInInjectionContext(this.injector, () => {
+      const consoleLogger = inject(ConsoleLoggerService);
+      consoleLogger.log('aman');
+    });
   }
 }
